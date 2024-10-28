@@ -74,7 +74,6 @@ The provided code is designed to measure the **performance of a GPT-2 model** on
 3. **Scalability**:
    - The test can be easily modified to run more or fewer iterations or to test larger models by changing the `num_iterations` or model parameters. This makes the method versatile for testing other models or configurations as needed.
 
-### Summary:
 The test method consists of running a **performance test 10 times** for a **GPT-2 model** on a GPU, measuring key metrics like throughput, latency, memory usage, and GPU utilization. After completing all test runs, the code averages the results, providing a stable and accurate measure of the model's overall performance. This method ensures that any variability in the individual tests is accounted for and provides a more reliable performance assessment.
 
 $ python3 gpu-test.py
