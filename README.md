@@ -48,3 +48,47 @@ Scalability:
 The test can be easily modified to run more or fewer iterations or to test larger models by changing the num_iterations or model parameters. This makes the method versatile for testing other models or configurations as needed.
 
 The test method consists of running a performance test 10 times for a GPT-2 model on a GPU, measuring key metrics like throughput, latency, memory usage, and GPU utilization. After completing all test runs, the code averages the results, providing a stable and accurate measure of the model's overall performance. This method ensures that any variability in the individual tests is accounted for and provides a more reliable performance assessment.
+
+$ python3 gpu-test.py
+tokenizer_config.json: 100%|███████████████████████████████| 26.0/26.0 [00:00<00:00, 205kB/s]
+config.json: 100%|██████████████████████████████████████████| 665/665 [00:00<00:00, 5.57MB/s]
+vocab.json: 100%|███████████████████████████████████████| 1.04M/1.04M [00:00<00:00, 1.85MB/s]
+merges.txt: 100%|█████████████████████████████████████████| 456k/456k [00:00<00:00, 1.09MB/s]
+tokenizer.json: 100%|███████████████████████████████████| 1.36M/1.36M [00:00<00:00, 1.91MB/s]
+model.safetensors: 100%|███████████████████████████████████| 548M/548M [00:02<00:00, 245MB/s]
+generation_config.json: 100%|████████████████████████████████| 124/124 [00:00<00:00, 867kB/s]
+
+The message you see when running the code indicates that various model files and tokenizer components are being downloaded. Here’s a breakdown of what each part means:
+
+1. **Downloading Tokenizer and Model Files**:
+   - **tokenizer_config.json**: This file contains the configuration settings for the tokenizer, specifying how the tokenizer should process input text.
+   - **config.json**: This file contains the configuration of the GPT-2 model itself, including model architecture details like the number of layers, hidden size, etc.
+   - **vocab.json**: This file holds the vocabulary that the tokenizer uses. It maps words or sub-words to their respective token IDs.
+   - **merges.txt**: This file is used by tokenizers that rely on **byte pair encoding (BPE)** to split or merge words into tokens.
+   - **tokenizer.json**: This is a compiled version of the tokenizer configuration that includes the vocab and merges in a more efficient format.
+   - **model.safetensors**: This is the file containing the weights of the pre-trained GPT-2 model in a safe tensor format, which is used for inference and processing input data.
+   - **generation_config.json**: This file includes the settings used by the model during text generation, like default `max_length` or `temperature`.
+
+2. **Progress Bars** (`100%|███████████████████████|`):
+   - Each line shows the download progress for these files. The bars indicate that the files are being downloaded from a remote source (likely from the **Hugging Face Model Hub**).
+   - The `100%` means that the download is complete for each file.
+
+3. **Download Speeds**:
+   - The numbers after the download progress (e.g., `[00:00<00:00, 205kB/s]`) indicate how long the download took and the speed at which each file was downloaded. This information helps to monitor download performance.
+
+### Why Does This Happen?
+- When you use Hugging Face's `transformers` library to load a pre-trained model (e.g., GPT-2), it needs to download these files the first time it is run. These files include the model weights and tokenizer configuration, which are necessary for using the model.
+- Once downloaded, these files are typically cached on your local system. So, the next time you run the script, the library will use the cached versions instead of downloading them again, speeding up the initialization process.
+
+### Where Are These Files Downloaded From?
+- These files are downloaded from **Hugging Face's Model Hub**. Hugging Face hosts many pre-trained models and tokenizers, allowing users to easily download and use them for various NLP tasks.
+- The library uses URLs embedded in the model's repository to fetch these files directly to your local environment.
+
+### What Happens After Downloading?
+- After downloading, the `transformers` library uses these files to initialize the GPT-2 model and tokenizer.
+- The **tokenizer** processes input text into a format suitable for the model, and the **model weights** allow the GPT-2 model to perform text generation tasks based on the pre-trained parameters.
+
+This process is normal when using pre-trained models from Hugging Face, especially when running the model for the first time on a new system or environment.
+
+
+
