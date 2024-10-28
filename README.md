@@ -76,14 +76,7 @@ The provided code is designed to measure the **performance of a GPT-2 model** on
 
 The test method consists of running a **performance test 10 times** for a **GPT-2 model** on a GPU, measuring key metrics like throughput, latency, memory usage, and GPU utilization. After completing all test runs, the code averages the results, providing a stable and accurate measure of the model's overall performance. This method ensures that any variability in the individual tests is accounted for and provides a more reliable performance assessment.
 
-$ python3 gpu-test.py
-tokenizer_config.json: 100%|███████████████████████████████| 26.0/26.0 [00:00<00:00, 205kB/s]
-config.json: 100%|██████████████████████████████████████████| 665/665 [00:00<00:00, 5.57MB/s]
-vocab.json: 100%|███████████████████████████████████████| 1.04M/1.04M [00:00<00:00, 1.85MB/s]
-merges.txt: 100%|█████████████████████████████████████████| 456k/456k [00:00<00:00, 1.09MB/s]
-tokenizer.json: 100%|███████████████████████████████████| 1.36M/1.36M [00:00<00:00, 1.91MB/s]
-model.safetensors: 100%|███████████████████████████████████| 548M/548M [00:02<00:00, 245MB/s]
-generation_config.json: 100%|████████████████████████████████| 124/124 [00:00<00:00, 867kB/s]
+![downloading_files](https://raw.githubusercontent.com/BrandonKang/gpu-llm-test/refs/heads/main/github_gpu_test.jpg)
 
 The message you see when running the code indicates that various model files and tokenizer components are being downloaded. Here’s a breakdown of what each part means:
 
