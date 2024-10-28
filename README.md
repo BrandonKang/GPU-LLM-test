@@ -1,3 +1,3 @@
-# GPU Performance Testing with LLM(Large Language Model) Use Cases
+# GPU Performance Testing with LLM Use Cases
 
 
