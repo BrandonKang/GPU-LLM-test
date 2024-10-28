@@ -76,6 +76,7 @@ The provided code is designed to measure the **performance of a GPT-2 model** on
 
 The test method consists of running a **performance test 10 times** for a **GPT-2 model** on a GPU, measuring key metrics like throughput, latency, memory usage, and GPU utilization. After completing all test runs, the code averages the results, providing a stable and accurate measure of the model's overall performance. This method ensures that any variability in the individual tests is accounted for and provides a more reliable performance assessment.
 
+### The first running code
 ![downloading_files](https://raw.githubusercontent.com/BrandonKang/gpu-llm-test/refs/heads/main/github_gpu_test.jpg)
 
 The message you see when running the code indicates that various model files and tokenizer components are being downloaded. Here’s a breakdown of what each part means:
@@ -96,15 +97,15 @@ The message you see when running the code indicates that various model files and
 3. **Download Speeds**:
    - The numbers after the download progress (e.g., `[00:00<00:00, 205kB/s]`) indicate how long the download took and the speed at which each file was downloaded. This information helps to monitor download performance.
 
-### Why Does This Happen?
+## Why Does This Happen?
 - When you use Hugging Face's `transformers` library to load a pre-trained model (e.g., GPT-2), it needs to download these files the first time it is run. These files include the model weights and tokenizer configuration, which are necessary for using the model.
 - Once downloaded, these files are typically cached on your local system. So, the next time you run the script, the library will use the cached versions instead of downloading them again, speeding up the initialization process.
 
-### Where Are These Files Downloaded From?
+## Where Are These Files Downloaded From?
 - These files are downloaded from **Hugging Face's Model Hub**. Hugging Face hosts many pre-trained models and tokenizers, allowing users to easily download and use them for various NLP tasks.
 - The library uses URLs embedded in the model's repository to fetch these files directly to your local environment.
 
-### What Happens After Downloading?
+## What Happens After Downloading?
 - After downloading, the `transformers` library uses these files to initialize the GPT-2 model and tokenizer.
 - The **tokenizer** processes input text into a format suitable for the model, and the **model weights** allow the GPT-2 model to perform text generation tasks based on the pre-trained parameters.
 
